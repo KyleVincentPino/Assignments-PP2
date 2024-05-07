@@ -1,0 +1,115 @@
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class ChoiceGame extends Application {
+
+    private Stage primaryStage;
+    private Label storyLabel;
+    private Button choice1Button;
+    private Button choice2Button;
+
+    // Current story state
+    private int storyIndex = 0;
+    private boolean ending = false;
+
+    // Story content
+    private String[] story = {
+        "You wake up in a dimly lit room. Your head is pounding. What do you do?",
+        "You found a screw driver. Where do you use it on?",
+        "You have unscrewed the vents but it is too high for you to climb out of to. What object will you use?"
+    };
+
+    // Actions for each choice
+    private String[][] choicesActions = {
+        {"Search for something useful in the surroundings", "Scream for help"}, // Story 0
+        {"The door at the end of the room", "The slightly tall vent near the ceiling"}, // Choice 1
+        {"The stepping stool in the corner", "The wooden crate near the door"} // Story 1
+    };
+
+    // Endings
+    private String[] endings = {
+        "Someone heard you. You are now dead.",
+        "Someone is coming and opens the door. You are now dead.",
+        "The box was too heavy and loud that someone heard it. You are now dead.",
+        "You are now out of the house. Good job, thief! \nThe End."
+    };
+
+    @Override
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        primaryStage.setTitle("A Weird Scenario...");
+
+        // Initialize UI components
+        VBox root = new VBox(10);
+        root.setPadding(new Insets(20));
+
+        storyLabel = new Label();
+        choice1Button = new Button();
+        choice2Button = new Button();
+
+        updateStory();
+
+        // Button actions
+        choice1Button.setOnAction(event -> {
+            // Move to next story based on choice 1
+            if (storyIndex == 0){
+            storyIndex += 1; 
+            }
+            else if (storyIndex == 1){
+            ending = true;
+            }
+            else if (storyIndex == 2){
+            storyIndex += 1;
+            ending = true;
+            }
+            updateStory();
+        });
+        
+        choice2Button.setOnAction(event -> {
+            // Move to next story based on choice 2
+            if (storyIndex == 0){
+            ending = true; 
+            }
+            else if (storyIndex == 1){
+            storyIndex += 1; 
+            }
+            else if (storyIndex == 2){
+            ending = true; 
+            }
+            updateStory();
+        });
+
+        // Add components to the layout
+        root.getChildren().addAll(storyLabel, choice1Button, choice2Button);
+
+        Scene scene = new Scene(root, 500, 300);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private void updateStory() {
+        // Display current story text
+        if (storyIndex < story.length) {
+            storyLabel.setText(story[storyIndex]);
+        }
+        if (ending == true) {
+            // Display ending
+            storyLabel.setText(endings[storyIndex]);
+            choice1Button.setVisible(false);
+            choice2Button.setVisible(false);
+        }
+        // Display choices if applicable
+        if (ending != true) {
+            choice1Button.setText(choicesActions[storyIndex][0]);
+            choice2Button.setText(choicesActions[storyIndex][1]);
+    }
+}
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
