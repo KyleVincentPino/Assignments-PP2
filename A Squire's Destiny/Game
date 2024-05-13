@@ -1,0 +1,81 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.Background;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.geometry.Pos;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Random;
+
+public class Game extends Application {
+   
+   private Stage primaryStage;
+   private Scene cipherScene;
+   private TextField decipherBox;
+   private Scene menuScene;
+   private Scene displayScene;
+   private Scene transitionScene;
+   private Scene endingScene;
+   private VBox root = new VBox(10);
+   //private Story story; pls make story class
+
+   public static void main(String[] args) {
+      launch(args);
+   }
+
+   @Override
+   public void start(Stage primaryStage) throws FileNotFoundException {
+      this.primaryStage = primaryStage;
+      //this.story = new Story(); pls make ^
+   
+      createCipherScene();
+      createMenuScene();
+      createDisplayScene();
+      createTransitionScene();
+      createEndingScene();
+      
+            
+      Image icon = new Image(new FileInputStream("icon.png"));
+      primaryStage.getIcons().add(icon);
+      primaryStage.setScene(cipherScene);
+      primaryStage.setTitle("A Squire's Destiny");
+      primaryStage.centerOnScreen();
+      primaryStage.show();
+   }
+
+   private void createCipherScene() {
+      // Cipher scene creation
+      decipherBox = new TextField();
+      decipherBox.setMaxWidth(400);
+      decipherBox.setPromptText("Enter code");
+      root.getChildren().addAll(decipherBox);
+      root.setAlignment(Pos.CENTER);
+      root.setBackground(Background.EMPTY);
+      cipherScene = new Scene(root, 1000, 600);
+      cipherScene.setFill(Color.BLACK);
+   }
+
+   private void createMenuScene() {
+      // Implement menu scene creation
+   }
+
+   private void createDisplayScene() {
+      // Implement display scene creation
+   }
+
+   private void createTransitionScene() {
+      // Implement transition scene creation
+   }
+
+   private void createEndingScene() {
+      // Implement ending scene creation
+   }
+
+   // Other methods for handling scene transitions and user choices
+}
