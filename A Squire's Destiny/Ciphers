@@ -1,0 +1,41 @@
+import java.util.Random;
+
+public class Ciphers {
+   
+   private Random rand = new Random();
+   private int cipherNum;
+   
+   private String[] cipherList = {
+      "tixalpiyffpktaqpvazc"
+   
+   };
+   
+   private String[] cipherAnswers = {
+      "ialoneamthechosenone"
+   
+   };
+   
+   private String[] hints = {
+      "Vigenère - limmy"
+   };
+   
+   public String getCipher(){
+      cipherNum = rand.nextInt(cipherList.length);
+      return cipherList[cipherNum];
+   }   
+   
+   public String getHint(){
+      return hints[cipherNum];
+   }
+   
+   public boolean solutionCheck(String input){
+      boolean check = false;
+      switch(cipherNum){
+      case 1: if (input == "ialoneamthechosenone") check = true;
+      case 2: 
+      default:
+      }
+      return check;
+   }
+   
+}
