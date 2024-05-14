@@ -7,6 +7,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.Background;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import java.io.FileInputStream;
@@ -23,6 +25,7 @@ public class Game extends Application {
    private Scene transitionScene;
    private Scene endingScene;
    private VBox root = new VBox(10);
+   
    //private Story story; pls make story class
 
    public static void main(String[] args) {
@@ -51,10 +54,28 @@ public class Game extends Application {
 
    private void createCipherScene() {
       // Cipher scene creation
-      decipherBox = new TextField();
-      decipherBox.setMaxWidth(400);
+      Ciphers cipherClass = new Ciphers(); // create Ciphers class instance
+      
+      Text dcText = new Text(); // create instruction text
+      dcText.setText("Decode To Play: ");
+      dcText.setFill(Color.WHITE);
+      
+      Text cipherText = new Text(); // create cipher
+      cipherText.setFill(Color.RED); cipherText.setStroke(Color.WHITE);
+      cipherText.setTextAlignment(TextAlignment.CENTER);
+      cipherText.setText(cipherClass.getCipher() + "\n\nHint: " + cipherClass.getHint());
+      
+      decipherBox = new TextField(); // create input field
+      decipherBox.setAlignment(Pos.CENTER); decipherBox.setMaxWidth(400);
       decipherBox.setPromptText("Enter code");
-      root.getChildren().addAll(decipherBox);
+      
+      Button confirmEntry = new Button(); // create confirm button
+      confirmEntry.setText("Enter");
+      confirmEntry.setOnAction(event -> {
+         cipherClass.solutionCheck(decipherBox.getText().toString());
+      });
+           
+      root.getChildren().addAll(dcText, cipherText, decipherBox, confirmEntry);
       root.setAlignment(Pos.CENTER);
       root.setBackground(Background.EMPTY);
       cipherScene = new Scene(root, 1000, 600);
