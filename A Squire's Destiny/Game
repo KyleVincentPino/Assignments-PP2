@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Background;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -38,10 +39,10 @@ public class Game extends Application {
       //this.story = new Story(); pls make ^
    
       createCipherScene();
-      createMenuScene();
-      createDisplayScene();
-      createTransitionScene();
-      createEndingScene();
+      //createMenuScene();
+      //createDisplayScene();
+      //createTransitionScene();
+      //createEndingScene();
       
             
       Image icon = new Image(new FileInputStream("icon.png"));
@@ -61,9 +62,11 @@ public class Game extends Application {
       dcText.setFill(Color.WHITE);
       
       Text cipherText = new Text(); // create cipher
+      String cipherString = cipherClass.getCipher();
+      String cipherHint = cipherClass.getHint();
       cipherText.setFill(Color.RED); cipherText.setStroke(Color.WHITE);
       cipherText.setTextAlignment(TextAlignment.CENTER);
-      cipherText.setText(cipherClass.getCipher() + "\n\nHint: " + cipherClass.getHint());
+      cipherText.setText(cipherString + "\n\nHint: " + cipherHint);
       
       decipherBox = new TextField(); // create input field
       decipherBox.setAlignment(Pos.CENTER); decipherBox.setMaxWidth(400);
@@ -72,18 +75,33 @@ public class Game extends Application {
       Button confirmEntry = new Button(); // create confirm button
       confirmEntry.setText("Enter");
       confirmEntry.setOnAction(event -> {
-         cipherClass.solutionCheck(decipherBox.getText().toString());
+         boolean check = cipherClass.solutionCheck(decipherBox.getText().toString(), cipherString);
+         if (check == true) createMenuScene();
+         else if (check == false) dcText.setText("WRONG. Try again.");
+         else System.exit(0);
       });
            
       root.getChildren().addAll(dcText, cipherText, decipherBox, confirmEntry);
       root.setAlignment(Pos.CENTER);
       root.setBackground(Background.EMPTY);
-      cipherScene = new Scene(root, 1000, 600);
-      cipherScene.setFill(Color.BLACK);
+      cipherScene = new Scene(root, 1000, 600, Color.BLACK);
    }
 
-   private void createMenuScene() {
+   private void createMenuScene(){
       // Implement menu scene creation
+      try {
+        root.getChildren().clear(); // clear root nodes
+        Image mn = new Image(new FileInputStream("menu.png"));
+        ImageView menu = new ImageView();
+        menu.setImage(mn); 
+        root.getChildren().addAll(menu);
+        menuScene = new Scene(root, 1000, 600);
+        primaryStage.setScene(menuScene);
+        primaryStage.show();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace(); // Handle the exception as per your application's requirement
+    }
+      
    }
 
    private void createDisplayScene() {
