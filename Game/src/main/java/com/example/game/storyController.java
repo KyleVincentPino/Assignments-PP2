@@ -15,11 +15,11 @@ public class storyController extends SceneController{
 
     private int storyCount = 5;
     private int scenePart = 0;
-    private String[] storyText = new String[0];
-    private String alignment = "neutral";
+    public String[] storyText = new String[0];
 
     private choiceController choiceController;
     private Story story = new Story();
+    private int storyVal = 0;
 
     @FXML
     private ImageView imageHolder;
@@ -36,9 +36,9 @@ public class storyController extends SceneController{
     @Override
     public void initialize() throws IOException{
         SceneManager.resetScenePart();
+        storyVal = SceneManager.getStoryVal();
         scenePart = SceneManager.getScenePart();
         storyCount = SceneManager.getStoryCount();
-        if (storyCount != 5) playResponseScene();
     }
 
     public void setStoryCount(){
@@ -47,13 +47,27 @@ public class storyController extends SceneController{
 
     @FXML
     public void nextClick() throws IOException{
-        switch(storyCount){
-            case 5: playIntro(); break;
-            case 4: playFirstPart(); break;
-            case 3: playSecondPart(); break;
-            case 2: playThirdPart(); break;
-            case 1: playFourthPart(); break;
-            default: break;
+        if (storyVal == 1) playResponseScene();
+        else {
+            switch (storyCount) {
+                case 5:
+                    playIntro();
+                    break;
+                case 4:
+                    playFirstPart();
+                    break;
+                case 3:
+                    playSecondPart();
+                    break;
+                case 2:
+                    playThirdPart();
+                    break;
+                case 1:
+                    playFourthPart();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -79,7 +93,7 @@ public class storyController extends SceneController{
             case 4: storyText = story.firstResponses(choice); break;
             case 3: storyText = story.secondResponses(choice); break;
             case 2: storyText = story.thirdResponses(choice); break;
-            case 1: storyText = story.getEnding(alignment); break;
+            case 1: storyText = story.getEnding(choice); break;
             default: break;
         }
 
@@ -89,14 +103,18 @@ public class storyController extends SceneController{
         }
         else {
             storyCount--;
+            scenePart = 0;
+            SceneManager.swapStoryVal();
+            storyVal = SceneManager.getStoryVal();
             setStoryCount();
-        }
+            System.out.println(storyCount + "<--- StoryCount");
 
-        switch(storyCount){
-            case 3: playSecondPart(); break;
-            case 2: playThirdPart(); break;
-            case 1: playFourthPart(); break;
-            default: break;
+            switch(storyCount){
+                case 3: playSecondPart(); break;
+                case 2: playThirdPart(); break;
+                case 1: playFourthPart(); break;
+                default: break;
+            }
         }
     }
 
@@ -110,6 +128,7 @@ public class storyController extends SceneController{
         }
         else {
             storyCount--;
+            scenePart = 0;
             setStoryCount();
             playFirstPart();
         }
@@ -117,14 +136,14 @@ public class storyController extends SceneController{
 
     public void playFirstPart() throws IOException {
         storyText = story.firstPart();
+
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
             scenePart++;
         }
         else {
             playChoiceScene();
-            storyCount--;
-            setStoryCount();
+            scenePart = 0;
         }
     }
 
@@ -136,8 +155,7 @@ public class storyController extends SceneController{
         }
         else {
             playChoiceScene();
-            storyCount--;
-            setStoryCount();
+            scenePart = 0;
         }
     }
 
@@ -149,8 +167,7 @@ public class storyController extends SceneController{
         }
         else {
             playChoiceScene();
-            storyCount--;
-            setStoryCount();
+            scenePart = 0;
         }
     }
 
@@ -162,8 +179,7 @@ public class storyController extends SceneController{
         }
         else {
             playChoiceScene();
-            storyCount--;
-            setStoryCount();
+            scenePart = 0;
         }
     }
 

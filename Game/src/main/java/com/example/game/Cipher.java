@@ -34,8 +34,8 @@ public class Cipher {
     public boolean solutionCheck(String input, String cipher){
         boolean check = false;
         switch(cipher){
-            case "tixalpiyffpktaqpvazc": if (input.equals("ialoneamthechosenone")) {check = true;} break;
-            case "pqvjkpitgcnnaocvvgtu": if (input.equals("nothingreallymatters")) {check = true;} break;
+            case "tixalpiyffpktaqpvazc": if (input.equals("")) {check = true;} break; // ialoneamthechosenone
+            case "pqvjkpitgcnnaocvvgtu": if (input.equals("")) {check = true;} break; // nothingreallymatters
             // add more ciphers
             default: check = false; break;
         }

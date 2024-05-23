@@ -67,6 +67,7 @@ public class choiceController extends SceneController{
     }
 
     public void storyResponse(Node inputButton) throws IOException {
+        SceneManager.swapStoryVal();
         root = FXMLLoader.load(getClass().getResource("storyScene.fxml"));
         stage = (Stage) inputButton.getScene().getWindow();
         scene = new Scene(root);

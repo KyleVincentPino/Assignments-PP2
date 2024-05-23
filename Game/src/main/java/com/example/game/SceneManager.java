@@ -11,9 +11,10 @@ public class SceneManager{
 
     public static int storyCount;
     public static int[] choices = new int[4];
-    public static int choice;
+    public static int choice = 1;
     public static int storyScene;
     public static int scenePart;
+    public static int storyVal = 0;
 
     public static void setStage(Stage stage) {
         SceneManager.stage = stage;
@@ -40,6 +41,16 @@ public class SceneManager{
     }
 
     // BRUH ---------------
+
+    public static void swapStoryVal(){
+        if (storyVal == 0) storyVal = 1;
+        else storyVal = 0;
+        System.out.println("SceneManager storyVal: " + storyVal);
+    }
+
+    public static int getStoryVal(){
+        return storyVal;
+    }
 
     public static void setChoice(int choice){
         SceneManager.choice = choice;

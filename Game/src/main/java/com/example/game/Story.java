@@ -143,7 +143,7 @@ public class Story {
         return response;
     }
 
-    public String[] getEnding(String alignment){
+    public String[] getEnding(int alignment){
         String [] end = new String[3];
         String[] good = {
                 "Remembering his oath to serve his kingdom with honor and valor, Alden remained steadfast in his allegiance.",
@@ -161,9 +161,9 @@ public class Story {
                 "At the climax of war, he gets slashed in the chest by the royal knights, dying a dog's death."
         };
         switch(alignment){
-            case "good": end = good; break;
-            case "neutral": end = neutral; break;
-            case "bad": end = bad; break;
+            case 1: end = good; break;
+            case 2: end = neutral; break;
+            case 3: end = bad; break;
             default: break;
         }
         return end;

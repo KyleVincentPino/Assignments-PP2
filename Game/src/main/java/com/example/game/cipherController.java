@@ -62,7 +62,6 @@ public class cipherController extends SceneController{
                 default: dcText.setText("Wrong.");
             }
         }
-        System.out.println("check: " + check);
 
     }
 }
