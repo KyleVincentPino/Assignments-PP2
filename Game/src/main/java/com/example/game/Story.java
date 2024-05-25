@@ -2,12 +2,6 @@ package com.example.game;
 
 public class Story {
 
-    // VARIABLES
-
-    private int StoryNum = 0;
-    private int[] choiceList = new int[4];
-    private int storyChoice;
-
     // GET STORY METHODS -------------------------
 
     public String[] getIntro(){
@@ -56,7 +50,6 @@ public class Story {
     // GET RESPONSES ------------------------
 
     public String[] firstResponses(int choice){
-        choiceList[0] = choice;
         String[] response = new String[0];
         switch(choice){
             case 1:
@@ -86,7 +79,6 @@ public class Story {
     }
 
     public String[] secondResponses(int choice){
-        choiceList[1] = choice;
         String[] response = new String[0];
         switch(choice){
             case 1:
@@ -116,7 +108,6 @@ public class Story {
     }
 
     public String[] thirdResponses(int choice){
-        choiceList[2] = choice;
         String[] response = new String[0];
         switch(choice){
             case 1:

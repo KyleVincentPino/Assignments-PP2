@@ -96,7 +96,7 @@ public class endingController extends SceneController{
     public void initialize() {
         choices = SceneManager.getChoices();
         setResults();
-        System.out.println("Karma: " + SceneManager.getKarma());
+        System.out.println("Karma: " + SceneManager.getKarma()); // Karma Error Check
     }
 
     // BACK TO MENU WHEN BUTTON PRESSED

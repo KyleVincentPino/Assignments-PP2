@@ -25,8 +25,8 @@ public class ImageManager {
         image = images[imageNumber];
     }
 
-    // SETS THE LIST OF IMAGES THAT ARE GONNA BE USED ON THE STORY, DEPENDING WHICH PART OF THE STORY YOU ARE ON
-    public void getStoryImage(){
+    // SETS THE LIST OF IMAGES THAT ARE GOING TO BE USED ON THE STORY, DEPENDING ON WHICH PART OF THE STORY YOU ARE AT
+    public void getStoryImages(){
         Image[] imageList = new Image[0];
         switch(SceneManager.getStoryCount()){
             case 5:

@@ -68,7 +68,6 @@ public class Cipher {
     // INPUT CHECK METHOD
     public boolean solutionCheck(String input, String cipher){
         boolean check = false;
-        if (input == "oursecretstayswithus"){return check;} // secretScene
         switch(cipher){
             /* DESTROY COMMENT AT FINAL RELEASE
             case "tixalpiyffpktaqpvazc": if (input.equals("ialoneamthechosenone")) {check = true;} break;
@@ -93,7 +92,7 @@ public class Cipher {
             case "nbtnuxjmibjxgkpctzsi": if (input.equals("victoryinthestruggle")) {check = true;} break;
             case "chaosunleashed" : if (input.equals("")) {check = true;} break;
              */
-            default: check = true; break; // delete instantiate check at FINAL
+            default: check = false; break; // delete instantiate check at FINAL
         }
         return check;
     }

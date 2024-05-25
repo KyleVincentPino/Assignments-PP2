@@ -2,7 +2,6 @@ package com.example.game;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -45,7 +44,7 @@ public class storyController extends SceneController{
     }
 
     @FXML // METHOD THAT PROGRESSES THE SCENES IF NEXT BUTTON PRESSED
-    public void nextClick() throws IOException{
+    private void nextClick() throws IOException{
         if (storyVal == 1) playResponseScene();
         else {
             switch (storyCount) {
@@ -69,12 +68,8 @@ public class storyController extends SceneController{
             }
         }
     }
-    // PLAY CHOICE SCENE
-    public void playChoiceScene() throws IOException {
-        cs();
-    }
     // TRANSITION TO CHOICE SELECTION SCENE
-    public void cs() throws IOException {
+    private void playChoiceScene() throws IOException {
         root = FXMLLoader.load(getClass().getResource("choiceScene.fxml"));
         stage = (Stage) nextButton.getScene().getWindow();
         scene = new Scene(root);
@@ -118,7 +113,7 @@ public class storyController extends SceneController{
         }
     }
 
-    public void toEndScreen() throws IOException{
+    private void toEndScreen() throws IOException{
         root = FXMLLoader.load(getClass().getResource("endingScene.fxml"));
         stage = (Stage) nextButton.getScene().getWindow();
         scene = new Scene(root);
@@ -128,7 +123,7 @@ public class storyController extends SceneController{
 
     // METHODS TO RUN PARTS -----------------------
 
-    public void playIntro() throws IOException{
+    private void playIntro() throws IOException{
         storyText = story.getIntro();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
@@ -142,7 +137,7 @@ public class storyController extends SceneController{
         }
     }
 
-    public void playFirstPart() throws IOException {
+    private void playFirstPart() throws IOException {
         storyText = story.firstPart();
 
         if (scenePart < storyText.length) {
@@ -155,7 +150,7 @@ public class storyController extends SceneController{
         }
     }
 
-    public void playSecondPart() throws IOException {
+    private void playSecondPart() throws IOException {
         storyText = story.secondPart();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
@@ -167,7 +162,7 @@ public class storyController extends SceneController{
         }
     }
 
-    public void playThirdPart() throws IOException {
+    private void playThirdPart() throws IOException {
         storyText = story.thirdPart();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
@@ -179,7 +174,7 @@ public class storyController extends SceneController{
         }
     }
 
-    public void playFourthPart() throws IOException {
+    private void playFourthPart() throws IOException {
         storyText = story.fourthPart();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);

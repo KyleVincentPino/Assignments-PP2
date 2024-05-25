@@ -17,7 +17,6 @@ public class choiceController extends SceneController{
     // VARIABLES
     private int karma = 0;
     private int storyScene = 1;
-    private storyController storyController = new storyController();
 
     @FXML
     private ImageView imageHolder;
@@ -42,11 +41,7 @@ public class choiceController extends SceneController{
 
     // SETTER AND GETTER METHODS
 
-    public void setStoryScene() {
-        SceneManager.setStoryScene(storyScene);
-    }
-
-    public void setChoices(){
+    private void setChoices(){
         storyScene = SceneManager.getStoryScene();
         String[] choices = new String[3];
         if (storyScene == 4) hideChoices();
@@ -74,7 +69,7 @@ public class choiceController extends SceneController{
     }
 
     // KARMA DECIDES WHICH ENDING ARE AVAILABLE AT THE FINAL CHOICE SCENE
-    public void addKarma(int choice){
+    private void addKarma(int choice){
         int[] karmaAdd1 = {5, 5, -10};
         int[] karmaAdd2 = {10, 0, -5};
         int[] karmaAdd3 = {10, -5, -10};
@@ -129,7 +124,7 @@ public class choiceController extends SceneController{
         storyResponse(choice3);
     }
 
-    public void hideChoices(){
+    private void hideChoices(){
         choice1.setVisible(false);
         choice2.setVisible(false);
         choice3.setVisible(false);
@@ -139,7 +134,7 @@ public class choiceController extends SceneController{
     }
 
     // PLAY RESPONSE SCENE ON THE STORY SCENE SIDE AFTER CHOOSING AN OPTION
-    public void storyResponse(Node inputButton) throws IOException {
+    private void storyResponse(Node inputButton) throws IOException {
         SceneManager.swapStoryVal();
         root = FXMLLoader.load(getClass().getResource("storyScene.fxml"));
         stage = (Stage) inputButton.getScene().getWindow();
