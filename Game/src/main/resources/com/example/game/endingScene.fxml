@@ -8,18 +8,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game.endingController">
    <children>
-      <TextArea layoutX="59.0" layoutY="60.0" prefHeight="498.0" prefWidth="654.0" style="-fx-background-color: black;" text="Congratulations! You got the |ALIGNMENT| Ending!&#10;&#10;Your Choices:&#10;In The First Crossroad, you chose the |num| option.&#10;In The Second Crossroad, you chose the |num| option.&#10;In The Third Crossroad, you chose the |num| option.&#10;In The Fourth Crossroad, you chose the |num| option.&#10;&#10;[descript of ending]" wrapText="true">
+      <TextArea fx:id="resultBox" editable="false" layoutX="59.0" layoutY="60.0" prefHeight="498.0" prefWidth="654.0" style="-fx-background-color: black;" text="Congratulations! You got the |ALIGNMENT| Ending!&#10;&#10;Your Choices:&#10;In The First Crossroad, you chose the |num| option.&#10;In The Second Crossroad, you chose the |num| option.&#10;In The Third Crossroad, you chose the |num| option.&#10;In The Fourth Crossroad, you chose the |num| option.&#10;&#10;[descript of ending]" wrapText="true">
          <font>
             <Font name="MS UI Gothic" size="21.0" />
          </font>
       </TextArea>
-      <Button layoutX="781.0" layoutY="396.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="141.0" style="-fx-background-color: green;" text="Main Menu" textFill="#fcfcfc">
+      <Button fx:id="menuButton" layoutX="781.0" layoutY="396.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="71.0" prefWidth="141.0" style="-fx-background-color: green;" text="Main Menu" textFill="#fcfcfc">
          <font>
             <Font size="22.0" />
          </font></Button>
-      <Button layoutX="781.0" layoutY="487.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="141.0" style="-fx-background-color: #8B0000;" text="Exit Game" textFill="WHITE">
+      <Button layoutX="781.0" layoutY="487.0" mnemonicParsing="false" onAction="#exitClick" prefHeight="71.0" prefWidth="141.0" style="-fx-background-color: #8B0000;" text="Exit Game" textFill="WHITE">
          <font>
             <Font name="MS UI Gothic" size="23.0" />
          </font></Button>

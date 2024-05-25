@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Random;
 
+// THE MOTHER OF ALL SCENES (IS IT NECESSARY? TO RUN THE GAME - NO. TO SIMPLIFY MY JOB - YES.)
 public abstract class SceneController {
     public Random rand = new Random();
 
@@ -18,6 +19,7 @@ public abstract class SceneController {
     protected Scene scene;
     protected Parent root;
 
+    // SCENE CONSTRUCTOR
     public SceneController(){
         this.stage = SceneManager.getStage();
         this.scene = SceneManager.getScene();
@@ -26,8 +28,8 @@ public abstract class SceneController {
 
     public void exitGame(){
         System.exit(0);
-    }
+    } // SIMPLIFIED EXIT TO BE USED BY 3 SCENES (CIPHER, MENU, ENDING)
 
-    public abstract void initialize() throws IOException;
+    public abstract void initialize() throws IOException; // INITIALIZATION ABSTRACT FOR DIFFERENT TYPE OF SCENE INITIALIZATIONS
 }
 

@@ -2,6 +2,8 @@ package com.example.game;
 
 public class Story {
 
+    // VARIABLES
+
     private int StoryNum = 0;
     private int[] choiceList = new int[4];
     private int storyChoice;
@@ -51,7 +53,7 @@ public class Story {
         };
     }
 
-    // RESPONSES ------------------------
+    // GET RESPONSES ------------------------
 
     public String[] firstResponses(int choice){
         choiceList[0] = choice;
@@ -60,8 +62,8 @@ public class Story {
             case 1:
                 response = new String[]{
                         "Alden fights the bandits, valiantly defending the villagers and driving the attackers away.",
-                        "Grateful for his bravery, the villagers offers him shelter for the night and shared tales of their struggles.",
-                        "Inspired by their resilience, Alden vows to continue his quest with renewed determination."
+                        "Grateful for his bravery, the villagers offers him gold as thanks for saving them.",
+                        "Alden accepts the gesture with grace and vows to continue his quest with renewed determination."
                 };
                 break;
             case 2:
@@ -142,6 +144,8 @@ public class Story {
         }
         return response;
     }
+
+    // GET ENDING
 
     public String[] getEnding(int alignment){
         String [] end = new String[3];

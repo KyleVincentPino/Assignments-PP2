@@ -13,11 +13,10 @@ import java.io.IOException;
 
 public class storyController extends SceneController{
 
+    // VARIABLES
     private int storyCount = 5;
     private int scenePart = 0;
     public String[] storyText = new String[0];
-
-    private choiceController choiceController;
     private Story story = new Story();
     private int storyVal = 0;
 
@@ -33,7 +32,7 @@ public class storyController extends SceneController{
         super();
     }
 
-    @Override
+    @Override // INITIALIZE USING SCENE MANAGER
     public void initialize() throws IOException{
         SceneManager.resetScenePart();
         storyVal = SceneManager.getStoryVal();
@@ -41,11 +40,11 @@ public class storyController extends SceneController{
         storyCount = SceneManager.getStoryCount();
     }
 
-    public void setStoryCount(){
+    public void setStoryCount(){ // SET STORY COUNT
         SceneManager.setStoryCount(storyCount);
     }
 
-    @FXML
+    @FXML // METHOD THAT PROGRESSES THE SCENES IF NEXT BUTTON PRESSED
     public void nextClick() throws IOException{
         if (storyVal == 1) playResponseScene();
         else {
@@ -70,10 +69,11 @@ public class storyController extends SceneController{
             }
         }
     }
-
+    // PLAY CHOICE SCENE
     public void playChoiceScene() throws IOException {
         cs();
     }
+    // TRANSITION TO CHOICE SELECTION SCENE
     public void cs() throws IOException {
         root = FXMLLoader.load(getClass().getResource("choiceScene.fxml"));
         stage = (Stage) nextButton.getScene().getWindow();
@@ -82,12 +82,13 @@ public class storyController extends SceneController{
         stage.show();
     }
 
+    // PLAY RESPONSE SCENE METHOD
     public void playResponseScene() throws IOException{
         int choice = SceneManager.getChoice();
         storyCount = SceneManager.getStoryCount();
         sc(choice);
     }
-    @FXML
+    @FXML // RESPONSE SCENE
     public void sc(int choice) throws IOException{
         switch(storyCount){
             case 4: storyText = story.firstResponses(choice); break;
@@ -107,15 +108,22 @@ public class storyController extends SceneController{
             SceneManager.swapStoryVal();
             storyVal = SceneManager.getStoryVal();
             setStoryCount();
-            System.out.println(storyCount + "<--- StoryCount");
 
             switch(storyCount){
                 case 3: playSecondPart(); break;
                 case 2: playThirdPart(); break;
                 case 1: playFourthPart(); break;
-                default: break;
+                default: toEndScreen(); break;
             }
         }
+    }
+
+    public void toEndScreen() throws IOException{
+        root = FXMLLoader.load(getClass().getResource("endingScene.fxml"));
+        stage = (Stage) nextButton.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     // METHODS TO RUN PARTS -----------------------

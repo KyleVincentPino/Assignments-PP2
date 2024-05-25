@@ -14,11 +14,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        // Start with Cipher Scene
+        // START WITH CIPHER SCENE
         FXMLLoader = new FXMLLoader(Main.class.getResource("cipherScene.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("cipherScene.fxml"));
         Scene scene = new Scene(FXMLLoader.load(), 1000, 600);
 
+        // SET APP DETAILS (ICON, TITLE)
         stage.setTitle("A Squire's Destiny");
         Image icon = new Image(getClass().getResourceAsStream("icon.png"));
         stage.getIcons().add(icon);

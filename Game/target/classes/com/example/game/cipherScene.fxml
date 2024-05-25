@@ -19,12 +19,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label id="cipherText" fx:id="cipherText" alignment="CENTER" layoutX="422.0" layoutY="211.0" prefHeight="35.0" prefWidth="157.0" text="test1" textAlignment="CENTER" textFill="WHITE">
+      <Label id="cipherText" fx:id="cipherText" alignment="CENTER" layoutX="22.0" layoutY="212.0" prefHeight="35.0" prefWidth="961.0" text="test1" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label id="cipherHint" fx:id="cipherHint" alignment="CENTER" layoutX="424.0" layoutY="240.0" prefHeight="35.0" prefWidth="157.0" text="test2" textAlignment="CENTER" textFill="WHITE">
+      <Label id="cipherHint" fx:id="cipherHint" alignment="CENTER" layoutX="22.0" layoutY="241.0" prefHeight="35.0" prefWidth="961.0" text="test2" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>

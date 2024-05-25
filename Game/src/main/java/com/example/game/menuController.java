@@ -14,28 +14,24 @@ public class menuController extends SceneController {
     @FXML
     private Button startButton;
 
-    private storyController storyController;
-    private choiceController choiceController;
-
     public menuController(){
         super();
     }
 
     @Override
-    public void initialize() {
-        this.storyController = new storyController();
-        this.choiceController = new choiceController();
-    }
+    public void initialize() {}
 
-    @FXML
-    public void startClick() throws IOException {
+    @FXML // STARTS GAME ON CLICK
+    private void startClick() throws IOException {
         startGame(startButton);
     }
 
-    public void startGame(Node inputButton) throws IOException {
-
+    // GAME START METHOD
+    private void startGame(Node inputButton) throws IOException {
+        // RESET ALL NECESSARY VARIABLES
         SceneManager.setStoryCount(5);
         SceneManager.setStoryScene(1);
+        SceneManager.resetKarma();
 
         root = FXMLLoader.load(getClass().getResource("storyScene.fxml"));
         stage = (Stage) inputButton.getScene().getWindow();
@@ -45,8 +41,8 @@ public class menuController extends SceneController {
     }
 
 
-    @FXML
-    public void exitClick(){
+    @FXML // CLOSE GAME
+    private void exitClick(){
         exitGame();
     }
 

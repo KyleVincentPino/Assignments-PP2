@@ -32,13 +32,14 @@ public class cipherController extends SceneController{
     private TextField cipherInput;
     private menuController mc;
 
-    @Override
+    @Override // INITIALIZE CIPHER
     public void initialize(){
         cipher = new Cipher();
         cipherText.setText(cipher.getCipher());
         cipherHint.setText(cipher.getHint());
     }
 
+    // TRANSITION TO MENU SCENE
     public void switchToMenu(Node inputButton) throws IOException {
         root = FXMLLoader.load(getClass().getResource("menuScene.fxml"));
         stage = (Stage) inputButton.getScene().getWindow();
@@ -47,19 +48,22 @@ public class cipherController extends SceneController{
         stage.show();
     }
 
-    @FXML
+    @FXML // INPUT CHECK METHOD, WHERE, IF WRONG INPUTS FOR 5 TRIES, IMMEDIATE APPLICATION END.
     protected void checkInput() throws IOException {
         Boolean check = cipher.solutionCheck(cipherInput.getText(), cipherText.getText());
         if (check == true) switchToMenu(inputButton);
         else {
-            int wR = rand.nextInt(3);
+            int wR = rand.nextInt(6);
             if (wrongCount == 5) exitGame();
             else wrongCount++;
-            switch(wR){
+            switch(wR){ // Dissing wrong attempts list randomized
                 case 0: dcText.setText("Wrong, try again."); break;
                 case 1: dcText.setText("Nope, not it."); break;
-                case 2: dcText.setText("Nuh uh, missed it."); break;
-                default: dcText.setText("Wrong.");
+                case 2: dcText.setText("Nuh Uh."); break;
+                case 3: dcText.setText("Do Better."); break;
+                case 4: dcText.setText("Are You Even Trying?"); break;
+                case 5: dcText.setText("Stop, just quit."); break;
+
             }
         }
 

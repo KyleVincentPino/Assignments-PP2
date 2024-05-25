@@ -14,17 +14,17 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor></Button>
       <TextField id="cipherInput" fx:id="cipherInput" alignment="CENTER" layoutX="316.0" layoutY="283.0" prefHeight="35.0" prefWidth="368.0" promptText="Enter The Code" />
-      <Label id="dcText" fx:id="dcText" alignment="CENTER" layoutX="422.0" layoutY="170.0" prefHeight="35.0" prefWidth="157.0" style="-fx-border-color: white;" text="Decode To Play:" textAlignment="CENTER" textFill="WHITE">
+      <Label id="dcText" fx:id="dcText" alignment="CENTER" layoutX="318.0" layoutY="170.0" prefHeight="35.0" prefWidth="368.0" style="-fx-border-color: white;" text="Decode To Play:" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label id="cipherText" fx:id="cipherText" alignment="CENTER" layoutX="422.0" layoutY="211.0" prefHeight="35.0" prefWidth="157.0" text="test1" textAlignment="CENTER" textFill="WHITE">
+      <Label id="cipherText" fx:id="cipherText" alignment="CENTER" layoutX="22.0" layoutY="212.0" prefHeight="35.0" prefWidth="961.0" text="test1" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label id="cipherHint" fx:id="cipherHint" alignment="CENTER" layoutX="424.0" layoutY="240.0" prefHeight="35.0" prefWidth="157.0" text="test2" textAlignment="CENTER" textFill="WHITE">
+      <Label id="cipherHint" fx:id="cipherHint" alignment="CENTER" layoutX="22.0" layoutY="241.0" prefHeight="35.0" prefWidth="961.0" text="test2" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
