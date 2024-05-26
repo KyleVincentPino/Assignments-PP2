@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -18,6 +19,8 @@ public class storyController extends SceneController{
     public String[] storyText = new String[0];
     private Story story = new Story();
     private int storyVal = 0;
+    private Image[] images;
+    private ImageManager ImageManager = new ImageManager();
 
     @FXML
     private ImageView imageHolder;
@@ -37,10 +40,22 @@ public class storyController extends SceneController{
         storyVal = SceneManager.getStoryVal();
         scenePart = SceneManager.getScenePart();
         storyCount = SceneManager.getStoryCount();
+        getImages();
     }
 
     public void setStoryCount(){ // SET STORY COUNT
         SceneManager.setStoryCount(storyCount);
+    }
+
+    public void getImages(){
+        images = new Image[10];
+        images = ImageManager.getImageList();
+    }
+
+    public void setImageHolder(){
+        getImages();
+        imageHolder.setImage(images[scenePart]);
+        System.out.println(scenePart + "<-- Scene part");
     }
 
     @FXML // METHOD THAT PROGRESSES THE SCENES IF NEXT BUTTON PRESSED
@@ -95,6 +110,7 @@ public class storyController extends SceneController{
 
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
+            setImageHolder();
             scenePart++;
         }
         else {
@@ -127,6 +143,8 @@ public class storyController extends SceneController{
         storyText = story.getIntro();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
+            System.out.println(images.length);
+            setImageHolder();
             scenePart++;
         }
         else {
@@ -139,9 +157,9 @@ public class storyController extends SceneController{
 
     private void playFirstPart() throws IOException {
         storyText = story.firstPart();
-
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
+            setImageHolder();
             scenePart++;
         }
         else {
@@ -154,6 +172,7 @@ public class storyController extends SceneController{
         storyText = story.secondPart();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
+            setImageHolder();
             scenePart++;
         }
         else {
@@ -166,6 +185,7 @@ public class storyController extends SceneController{
         storyText = story.thirdPart();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
+            setImageHolder();
             scenePart++;
         }
         else {
@@ -178,6 +198,7 @@ public class storyController extends SceneController{
         storyText = story.fourthPart();
         if (scenePart < storyText.length) {
             textHolder.setText(storyText[scenePart]);
+            setImageHolder();
             scenePart++;
         }
         else {

@@ -69,7 +69,6 @@ public class Cipher {
     public boolean solutionCheck(String input, String cipher){
         boolean check = false;
         switch(cipher){
-            /* DESTROY COMMENT AT FINAL RELEASE
             case "tixalpiyffpktaqpvazc": if (input.equals("ialoneamthechosenone")) {check = true;} break;
             case "pqvjkpitgcnnaocvvgtu": if (input.equals("nothingreallymatters")) {check = true;} break;
             case "zwevmgfivzdzrghfh": if (input.equals("adventureawaitsus")) {check = true;} break;
@@ -91,7 +90,6 @@ public class Cipher {
             case "tjivvbefubcxgkegpo": if (input.equals("realmsoftheknights")) {check = true;} break;
             case "nbtnuxjmibjxgkpctzsi": if (input.equals("victoryinthestruggle")) {check = true;} break;
             case "chaosunleashed" : if (input.equals("")) {check = true;} break;
-             */
             default: check = false; break; // delete instantiate check at FINAL
         }
         return check;

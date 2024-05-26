@@ -17,6 +17,7 @@ public class choiceController extends SceneController{
     // VARIABLES
     private int karma = 0;
     private int storyScene = 1;
+    private ImageManager ImageManager = new ImageManager();
 
     @FXML
     private ImageView imageHolder;
@@ -33,6 +34,7 @@ public class choiceController extends SceneController{
 
     @Override // INITIALIZE CHOICE SCENE
     public void initialize() {
+        setImageHolder();
         storyScene = SceneManager.getStoryScene();
         karma = SceneManager.getKarma();
         if (storyScene == 4) hideChoices();
@@ -40,6 +42,10 @@ public class choiceController extends SceneController{
     }
 
     // SETTER AND GETTER METHODS
+
+    private void setImageHolder(){
+        imageHolder.setImage(ImageManager.getChoiceImage());
+    }
 
     private void setChoices(){
         storyScene = SceneManager.getStoryScene();
